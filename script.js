@@ -1,6 +1,7 @@
 let weather = {
   apiKey: "1e180c803a4998322ba3929358e28585",
   fetchWeather: function (city) {
+    
     // Make a request to the Weather API
     fetch(
       "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -9,17 +10,20 @@ let weather = {
         this.apiKey
     )
       .then((response) => {
+      
         // Show error message if the response is not successful
         if (!response.ok) {
           alert("No weather found.");
           throw new Error("No weather found.");
         }
+      
         // Return response in JSON format
         return response.json();
       })
       .then((data) => this.displayWeather(data));
   },
   displayWeather: function (data) {
+    
     // Display weather data
     const { name } = data;
     const { icon, description } = data.weather[0];
@@ -41,6 +45,7 @@ let weather = {
       "url('https://source.unsplash.com/1600x900/?" + name + "')";
   },
   search: function () {
+    
     // Search weather based on city name entered in the search bar
     this.fetchWeather(document.querySelector(".search-bar").value);
   },
