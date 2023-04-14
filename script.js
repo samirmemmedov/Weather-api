@@ -1,8 +1,7 @@
- let weather = {
+let weather = {
   apiKey: "1e180c803a4998322ba3929358e28585",
   fetchWeather: function (city) {
-
-    // Hava durumu API'sine istek yap
+    // Make a request to the Weather API
     fetch(
       "https://api.openweathermap.org/data/2.5/weather?q=" +
         city +
@@ -10,21 +9,18 @@
         this.apiKey
     )
       .then((response) => {
-
-        // Yanıt başarısız ise hata göster
+        // Show error message if the response is not successful
         if (!response.ok) {
           alert("No weather found.");
           throw new Error("No weather found.");
         }
-
-        // Yanıtı JSON formatında döndür
+        // Return response in JSON format
         return response.json();
       })
       .then((data) => this.displayWeather(data));
   },
   displayWeather: function (data) {
-
-    // Hava durumu verilerini göster
+    // Display weather data
     const { name } = data;
     const { icon, description } = data.weather[0];
     const { temp, humidity } = data.main;
@@ -40,30 +36,27 @@
       "Wind speed: " + speed + " km/h";
     document.querySelector(".weather").classList.remove("loading");
 
-    // Arka plan resmini değiştir
+    // Change the background image
     document.body.style.backgroundImage =
       "url('https://source.unsplash.com/1600x900/?" + name + "')";
   },
   search: function () {
-
-    // Arama çubuğuna girilen şehir ismine göre hava durumunu getir
+    // Search weather based on city name entered in the search bar
     this.fetchWeather(document.querySelector(".search-bar").value);
   },
 };
 
-// Arama butonuna tıklandığında arama yap
+// Perform search on click of the search button
 document.querySelector(".search button").addEventListener("click", function () {
   weather.search();
 });
 
-// Arama çubuğuna enter tuşuna basıldığında arama yap
-document
-  .querySelector(".search-bar")
-  .addEventListener("keyup", function (event) {
-    if (event.key == "Enter") {
-      weather.search();
-    }
-  });
+// Perform search on pressing enter key in the search bar
+document.querySelector(".search-bar").addEventListener("keyup", function (event) {
+  if (event.key == "Enter") {
+    weather.search();
+  }
+});
 
-// Başlangıçta Denver şehrinin hava durumunu göster
-weather.fetchWeather("Denver");
+// Display weather for Denver city by default
+weather.fetchWeather("Baku");
