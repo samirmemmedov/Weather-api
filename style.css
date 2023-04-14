@@ -1,3 +1,4 @@
+/* Set up flexbox for centering content */
 body {
   display: flex;
   justify-content: center;
@@ -10,6 +11,7 @@ body {
   font-size: 120%;
 }
 
+/* Style for the card container */
 .card {
   background: #000000d0;
   color: white;
@@ -20,12 +22,14 @@ body {
   margin: 1em;
 }
 
+/* Style for the search container */
 .search {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* Style for the search button */
 button {
   margin: 0.5em;
   border-radius: 50%;
@@ -39,6 +43,7 @@ button {
   transition: 0.2s ease-in-out;
 }
 
+/* Style for the search bar input */
 input.search-bar {
   border: none;
   outline: none;
@@ -51,31 +56,37 @@ input.search-bar {
   width: calc(100% - 100px);
 }
 
+/* button hover effect */
 button:hover {
   background: #7c7c7c6b;
 }
 
+/* style for temperature display */
 h1.temp {
   margin: 0;
   margin-bottom: 0.4em;
 }
 
+/* flexbox container */
 .flex {
   display: flex;
   align-items: center;
 }
 
+/* description text style */
 .description {
   text-transform: capitalize;
   margin-left: 8px;
 }
 
+/* style for loading state */
 .weather.loading {
   visibility: hidden;
   max-height: 20px;
   position: relative;
 }
 
+/* style for loading text */
 .weather.loading:after {
   visibility: visible;
   content: "Loading...";
